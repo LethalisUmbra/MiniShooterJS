@@ -36,7 +36,7 @@ if (!record) {
     record = 0
     localStorage.setItem('record', record)
 }
-let muted = false
+let muted = true
 let score
 let shoots
 let shootsHitted
