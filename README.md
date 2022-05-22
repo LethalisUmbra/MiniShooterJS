@@ -4,6 +4,7 @@
 
 ### Controls:
 Shot: Left click  
+Mute: M  
 Pause: P - Space - Enter  
 Unpause: P - Space - Enter - Left click  
 Restart: R - F5  
