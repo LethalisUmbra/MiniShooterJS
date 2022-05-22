@@ -66,6 +66,7 @@ function startGame() {
     pause = false
     gameStarted = true
     modal.style.display = 'none'
+    modalRecord.style.visibility = 'hidden'
     
     record = localStorage.getItem('record')
 
