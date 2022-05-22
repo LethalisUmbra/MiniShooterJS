@@ -36,7 +36,7 @@ if (!record) {
     record = 0
     localStorage.setItem('record', record)
 }
-let muted = true
+let muted = false
 let score
 let shoots
 let shootsHitted
@@ -359,7 +359,6 @@ addEventListener('click', (e) => {
         )
 
         if (!muted){
-            console.log('Muted: '.muted)
             pew.volume = 0.1
             pew.pause()
             pew.currentTime = 0
