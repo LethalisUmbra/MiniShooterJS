@@ -20,3 +20,7 @@ the largest ones shrink with each hit until they reach the smallest size when th
 ### Stats
 In the upper right corner you can see the statistics of your game,  
 in addition to the record achieved by you.  
+
+## Screenshot
+
+![main_game](https://raw.githubusercontent.com/LethalisUmbra/MiniShooterJS/master/game.jpg)
