@@ -15,6 +15,9 @@ const modalScore = document.getElementById('modalScore')
 const modalRecord = document.getElementById('modalRecord')
 const startGameBtn = document.getElementById('startGameBtn')
 
+const death = new Audio('./death.mp3');
+const pew = new Audio('./pew.mp3');
+
 canvas.width = innerWidth
 canvas.height = innerHeight
 
@@ -33,6 +36,7 @@ if (!record) {
     record = 0
     localStorage.setItem('record', record)
 }
+let muted = false
 let score
 let shoots
 let shootsHitted
@@ -72,11 +76,12 @@ function startGame() {
 }
 
 function gameOver() {
-    const death = new Audio('./death.mp3');
-    death.volume = 0.5
-    death.pause()
-    death.currentTime = 0
-    death.play()
+    if (!muted){
+        death.volume = 0.5
+        death.pause()
+        death.currentTime = 0
+        death.play()
+    }
 
     cancelAnimationFrame(animationId)
     clearInterval(spawnInterval)
@@ -353,11 +358,12 @@ addEventListener('click', (e) => {
             new Projectile(x, y, 5, 'white', velocity)
         )
 
-        const pew = new Audio('./pew.mp3');
-        pew.volume = 0.1
-        pew.pause()
-        pew.currentTime = 0
-        pew.play()
+        if (!muted){
+            pew.volume = 0.1
+            pew.pause()
+            pew.currentTime = 0
+            pew.play()
+        }
 
     } else if (gameStarted && pause) {
         pause = false
@@ -374,6 +380,9 @@ addEventListener('keypress', (e) => {
         case 'KeyR':
             gameOver()
             startGame()
+            break
+        case 'KeyM':
+            muted = !muted
             break
         default:
             break
