@@ -1,5 +1,8 @@
 # MiniShooterJS
 
+## Game link
+[link](https://lethalisumbra.github.io/MiniShooterJS/)
+
 ## Instructions
 
 ### Controls:
