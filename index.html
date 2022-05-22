@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <title>Disparitos</title>
+    <!-- <script src="https://cdn.tailwindcss.com"></script> TailwindCss -->
+</head>
+<body>
+    <style>
+        html, body { height: 100%; }
+        body {
+            margin: 0;
+            cursor: crosshair;
+            background-color: #000;
+            color: #fff;
+            font-family: monospace, 'Lucida Console', 'Arial Narrow', Arial, sans-serif;
+            -webkit-touch-callout: none; /* iOS Safari */
+              -webkit-user-select: none; /* Safari */
+               -khtml-user-select: none; /* Konqueror HTML */
+                 -moz-user-select: none; /* Firefox */
+                  -ms-user-select: none; /* Internet Explorer/Edge */
+                      user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+        }
+
+        .timer {
+            position: fixed;
+            left: 0;
+            right: 0;
+            margin-top: .8rem;
+            text-align: center;
+        }
+        
+        .stats {
+            position: fixed;
+            font-size: .9rem;
+            margin-left: .8rem;
+            margin-top: .8rem;
+            line-height: 1.2;
+        }
+
+        canvas {
+            position: fixed;
+            z-index: -1;
+        }
+
+        .main-menu {
+            padding: 1.5rem;
+            border-radius: 1rem;
+            width: 500px;
+            background-color: #fff;
+            color: #000;
+            z-index: 2;
+
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .main-menu > * {
+            margin: 0;
+        }
+
+        .main-menu > button {
+            background-color: #1a80df;
+            color: white;
+            padding: 1rem;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+
+            border: none;
+            border-radius: 1.5rem;
+        }
+
+        .main-menu > button:hover {
+            background-color: #3493eb;
+        }
+
+        .main-menu > h1 {
+            font-weight: bold;
+            font-size: 3rem;
+        }
+
+        .main-menu > p {
+            color: #777;
+        }
+        
+        .main-menu > small {
+            color: #777;
+            font-size: .7rem;
+            margin-top: .5rem;
+        }
+        
+        .main-menu > h5 {
+            margin-top: .5rem;
+            margin-bottom: .5rem;
+            
+            font-size: 1.2rem;
+            color: #dd0;
+            text-shadow: 0 0 3px #ff0, 0 0 5px #ff0, 0 0 7px #ff0;
+
+            visibility: hidden;
+        }
+
+        .game-paused, .main-menu {
+            position: fixed;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            font-family: Helvetica, Arial, sans-serif;
+            cursor: default;
+        }
+
+        .game-paused {
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0,0,0,0.8);
+        }
+    </style>
+
+    <div class="stats">
+        <span>Accuracy: </span><span id="accuracy">100% (0/0)</span><br>
+        <span>Multiplier: </span>x<span id="multiplier">1</span><br>
+        <span>Streak: </span><span id="streak">0</span><br>
+        <span>Record: </span><span id="record">0</span><br>
+        <span>Score: </span><span id="score">0</span><br>
+    </div>
+
+    <div class="timer">
+        <span id="timer">00:00</span>
+    </div>
+
+    <div class="main-menu" id="modal">
+        <h1 id="modalScore">0</h1>
+        <p>Points</p>
+        <h5 id="modalRecord">New Record!</h5>
+        <button id="startGameBtn">Start Game</button>
+        <small>press 'P' to pause the game</small>
+    </div>
+
+    <div class="game-paused" id="gamePaused">
+        <h1>GAME PAUSED</h1>
+        <small>click to resume</small>
+    </div>
+    
+    <canvas></canvas>
+
+    <script src="./index.js"></script>
+</body>
+</html>
