@@ -359,6 +359,7 @@ addEventListener('click', (e) => {
         )
 
         if (!muted){
+            console.log('Muted: '.muted)
             pew.volume = 0.1
             pew.pause()
             pew.currentTime = 0
